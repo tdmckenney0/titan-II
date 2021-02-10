@@ -37,9 +37,9 @@ class Request {
     /**
      * Get the Hostname. 
      * 
-     * @return string
+     * @return string|null
      */
-    public function getHost(): string
+    public function getHost(): ?string
     {
         return parse_url($this->url, PHP_URL_HOST);
     }
@@ -47,19 +47,31 @@ class Request {
     /**
      * Get the Path. 
      * 
-     * @return string
+     * @return string|null
      */
-    public function getPath(): string
+    public function getPath(): ?string
     {
         return parse_url($this->url, PHP_URL_PATH);
     }
 
     /**
+     * Get the path, but as an array.
+     * 
+     * @return array
+     */
+    public function tokenizePath(): array
+    {
+        $path = trim(trim($this->getPath()), '/');
+
+        return explode('/', $path);
+    }
+
+    /**
      * Get the Query. 
      * 
-     * @return string
+     * @return string|null
      */
-    public function getQuery(): string
+    public function getQuery(): ?string
     {
         return parse_url($this->url, PHP_URL_QUERY);
     }
