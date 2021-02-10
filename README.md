@@ -2,6 +2,9 @@
 
 Gemini Protocol library for PHP. 
 
+ - [gemini://gemini.circumlunar.space/](gemini://gemini.circumlunar.space/)
+ - [https://gemini.circumlunar.space/](https://gemini.circumlunar.space/)
+
 ## Basic Implentation
 
 ```
