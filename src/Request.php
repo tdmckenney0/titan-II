@@ -33,4 +33,34 @@ class Request {
     {
         return $this->url;
     }
+
+    /**
+     * Get the Hostname. 
+     * 
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return parse_url($this->url, PHP_URL_HOST);
+    }
+
+    /**
+     * Get the Path. 
+     * 
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return parse_url($this->url, PHP_URL_PATH);
+    }
+
+    /**
+     * Get the Query. 
+     * 
+     * @return string
+     */
+    public function getQuery(): string
+    {
+        return parse_url($this->url, PHP_URL_QUERY);
+    }
 }
