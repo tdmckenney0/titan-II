@@ -55,6 +55,16 @@ class Response {
     }
 
     /**
+     * Get the Response Code
+     * 
+     * @return int
+     */
+    public function getCode(): int
+    {
+        return $this->code;
+    }
+
+    /**
      * Set Meta Data
      * 
      * @param string
@@ -68,6 +78,16 @@ class Response {
     }
 
     /**
+     * Get the Response Meta
+     * 
+     * @return string
+     */
+    public function getMeta(): string
+    {
+        return $this->meta;
+    }
+
+    /**
      * Set the Response content. 
      * 
      * @param string 
@@ -78,6 +98,16 @@ class Response {
     {
         $this->content = $content;
         return $this;
+    }
+
+    /**
+     * Get the Response content
+     * 
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
     }
 
     /**
