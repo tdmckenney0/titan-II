@@ -13,11 +13,17 @@ $server = new Server();
 $server->setCert(__DIR__ . DIRECTORY_SEPARATOR . 'certs' . DIRECTORY_SEPARATOR . 'cert.pem');
 $server->setKey(__DIR__ . DIRECTORY_SEPARATOR . 'certs' . DIRECTORY_SEPARATOR . 'key.rsa');
 
-$server->setHandler(function (Request $request): Response {
+$body = <<<GEMINI
+# This is a server test!
+
+Congrats! You passed!
+GEMINI;
+
+$server->setHandler(function (Request $request) use (&$body): Response {
     $response = new Response();
 
-    $response->setMeta('text/plain');
-    $response->setContent("Hello world!");
+    $response->setMeta('text/gemini');
+    $response->setContent($body);
 
     echo $request;
 
