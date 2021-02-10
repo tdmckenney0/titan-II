@@ -23,7 +23,7 @@ class Request {
      */
     public function __construct(string $url)
     {
-        $this->url = substr($url, 0, self::MAX_LENGTH);
+        $this->url = trim(substr($url, 0, self::MAX_LENGTH));
     }
 
     /**
