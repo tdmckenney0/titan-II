@@ -8,17 +8,25 @@ use TitanII\Server;
 use TitanII\Request;
 use TitanII\Response;
 
+// Make a new server
 $server = new Server();
 
+// Set the certs. 
 $server->setCert(__DIR__ . DIRECTORY_SEPARATOR . 'certs' . DIRECTORY_SEPARATOR . 'cert.pem');
 $server->setKey(__DIR__ . DIRECTORY_SEPARATOR . 'certs' . DIRECTORY_SEPARATOR . 'key.rsa');
 
+// Response Body (Gemini Text!)
 $body = <<<GEMINI
-# This is a server test!
+# Titan II Lifts off!
 
-Congrats! You passed!
+The tower is clear!
 GEMINI;
 
+/**
+ * Set a request handler.
+ * 
+ * This function must take a `TitanII\Request` object, and return a `TitanII\Response` object. 
+ */
 $server->setHandler(function (Request $request) use (&$body): Response {
     $response = new Response();
 
@@ -30,4 +38,7 @@ $server->setHandler(function (Request $request) use (&$body): Response {
     return $response;
 });
 
+/**
+ * Boot the server!
+ */
 $server->start();

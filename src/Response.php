@@ -4,6 +4,8 @@ namespace TitanII;
 
 /**
  * Gemini Response
+ * 
+ * @see gemini://gemini.circumlunar.space/docs/specification.gmi
  */
 class Response {
     /**
@@ -32,10 +34,15 @@ class Response {
      */
     private string $content = "";
 
-    public function __construct()
-    {
-    }
-
+    /**
+     * Set the Response code. 
+     *  
+     * @param int Code.
+     * 
+     * @return self Method chaining.
+     * 
+     * @throws Exception If not a valid code. 
+     */
     public function setCode(int $code): self
     {
         if (!in_array($code, self::CODES)) {
@@ -47,18 +54,35 @@ class Response {
         return $this;
     }
 
+    /**
+     * Set Meta Data
+     * 
+     * @param string
+     * 
+     * @return self Method chaining.
+     */
     public function setMeta(string $meta): self
     {
         $this->meta = $meta;
         return $this;
     }
 
+    /**
+     * Set the Response content. 
+     * 
+     * @param string 
+     * 
+     * @return self Method chaining.
+     */
     public function setContent(string $content): self
     {
         $this->content = $content;
         return $this;
     }
 
+    /**
+     * Magic Method
+     */
     public function __toString(): string
     {
         return $this->code . ' ' . $this->meta . "\r\n" . $this->content;

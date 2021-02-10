@@ -53,6 +53,8 @@ class Server {
     /**
      * @param callable Handle incoming requests. 
      * 
+     * @return self Method chaining. 
+     * 
      * Parameter 1 Callable is expected to handle the following:
      * 
      * @param Request
@@ -66,6 +68,11 @@ class Server {
         return $this;
     }
 
+    /**
+     * Set the Certification file. 
+     * 
+     * @return self Method chaining. 
+     */
     public function setCert(string $file): self
     {
         stream_context_set_option($this->context, 'ssl', 'local_cert', $file);
@@ -73,6 +80,13 @@ class Server {
         return $this;
     }
 
+    /**
+     * Optional. Set cert paassphrase. 
+     * 
+     * @param string
+     * 
+     * @return self Method chaining. 
+     */
     public function setCertPassphrase(string $passphrase): self
     {
         stream_context_set_option($this->context, 'ssl', 'passphrase', $passphrase);
@@ -80,6 +94,13 @@ class Server {
         return $this;
     }
 
+    /**
+     * Set the Key file.
+     * 
+     * @param string
+     * 
+     * @return self Method chaining. 
+     */
     public function setKey(string $key): self
     {
         stream_context_set_option($this->context, 'ssl', 'local_pk', $key);
@@ -87,6 +108,14 @@ class Server {
         return $this;
     }
 
+    /**
+     * Open the server socket. 
+     * 
+     * @param string IP Address
+     * @param int Port Number. 
+     * 
+     * @return bool True on success, false on failure. 
+     */
     protected function openSocket(string $ip, int $port): bool
     {
         $addr = "tcp://" . $ip . ':' . $port;
@@ -102,6 +131,12 @@ class Server {
         return true;
     }
 
+    /**
+     * Start the server!
+     * 
+     * @param string IP Address
+     * @param int Port Number.
+     */
     public function start(string $ip = '0', int $port = 1965): void
     {
         $this->openSocket($ip, $port);
@@ -128,6 +163,9 @@ class Server {
         }
     }
 
+    /**
+     * Stop the server!
+     */
     public function stop(): void
     {
         $this->active = false;

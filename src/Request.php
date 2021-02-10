@@ -18,11 +18,17 @@ class Request {
      */
     private string $url;
 
+    /**
+     * @param string Incoming URL request. 
+     */
     public function __construct(string $url)
     {
         $this->url = substr($url, 0, self::MAX_LENGTH);
     }
 
+    /**
+     * Magic method. 
+     */
     public function __toString(): string
     {
         return $this->url;
