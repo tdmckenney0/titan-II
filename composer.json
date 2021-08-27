@@ -3,7 +3,7 @@
     "version": "0.1",
     "description": "Gemini Protocol Library",
     "type": "library",
-    "license": "BSD",
+    "license": "GPLv3",
     "authors": [
         {
             "name": "Tanner Mckenney",
